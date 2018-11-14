@@ -117,15 +117,15 @@ for(i=2;i<=(Params->MAXT[pop]/7);i++)	{
 
 	//CK// Adding in the likelihoods from the experimental data here
 	//JL: In the calculation of likelihood from experimental data, we assume that the density and transmission rate of conidia or resting spore remain the same for each cage.
-	//JL: The cages are put in the field for only 24 hours on one day in a week, and then taken back to the lab, and raise each individual separately until death.
+	//JL: The cages are put in the field for only 24 hours on one day near the ending of a week, and then taken back to the lab, and raise each individual separately until death.
 	//JL: Thus, we can directly solve the differential equation to get S(t)/S(0), which is exactly the fraction of uninfected.
-	//JL: We estimate the weekly "force" of fungal infection by averaging the products of density and transmission rate on the beginning and ending day of that week.
+	//JL: We estimate the weekly "force" of fungal infection by averaging the products of density and transmission rate on the second last and ending day of that week.
 
 for(j = 0; j<=(Params->MAXT2[pop]); j++){    //loop calculating the likelihood for each cage
 
 	day=Params->EXPDATA[pop][j][2];   //CK// pull out the week number for that cage
 
-	c1=sim_results[day][3];	c2=sim_results[day][4];			//CK//  conidia and resting spores for the beginning and ending of that week from DDEVF (from model output)
+	c1=sim_results[day][3];	c2=sim_results[day][4];			//CK//  conidia and resting spores for the second last and ending of that week from DDEVF (from model output)
 	r1=sim_results[day][5];	r2=sim_results[day][6];
 
 	y1=Params->EXPDATA[pop][j][0];		y2=Params->EXPDATA[pop][j][1];		//CK//  S and F(infected by fungus) for that cage
